@@ -7,7 +7,7 @@
     size: "{{ item.size }}"
     region: "{{ item.region }}"
     image: "{{ item.image }}"
-    backups: "{{ item.backups }}"
-    tags: "{{ item.tags }}"
+    backups: "{{ item.backups | default('no')}}"
+    tags: "{{ item.tags | default([]) }}"
   register: _droplet_create
   loop: "{{ digitalocean_droplets | default([]) }}"
